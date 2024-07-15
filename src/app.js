@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { extractNumbers } from "./src/parser.js";
+import {
+  validateStringNotEmpty,
+  validateNumber,
+} from "./src/util/validation.js";
+import { add } from "./src/math.js";
+import { transformToNumber } from "./src/util/numbers.js";
 
-function App() {
-  const [count, setCount] = useState(0)
+const form = document.querySelector("form");
+const output = document.getElementById("result");
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function formSubmitHandler(event) {
+  event.preventDefault();
+  const formData = new FormData(form);
+  const numberInputs = extractNumbers(formData);
+
+  let result = "";
+
+  try {
+    const numbers = [];
+    for (const numberInput of numberInputs) {
+      validateStringNotEmpty(numberInput);
+      const number = transformToNumber(numberInput);
+      validateNumber(number);
+      numbers.push(number);
+    }
+    result = add(numbers).toString();
+  } catch (error) {
+    result = error.message;
+  }
+
+  let resultText = "";
+
+  if (result === "invalid") {
+    resultText = "Invalid input. You must enter valid numbers.";
+  } else if (result !== "no-calc") {
+    resultText = "Result: " + result;
+  }
+
+  output.textContent = resultText;
 }
 
-export default App
+form.addEventListener("submit", formSubmitHandler);
