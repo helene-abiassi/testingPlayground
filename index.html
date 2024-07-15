@@ -1,13 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Testing Basics</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        margin: 2rem;
+      }
+
+      div,
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+    <script type="module" defer src="app.js"></script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <form action="/calculate" method="POST">
+      <div>
+        <label for="num1">First Number</label>
+        <input id="num1" name="num1" type="numeric" />
+      </div>
+      <div>
+        <label for="num2">Second Number</label>
+        <input id="num2" name="num2" type="numeric" />
+      </div>
+      <button>Calculate</button>
+    </form>
+    <div id="result"></div>
   </body>
 </html>

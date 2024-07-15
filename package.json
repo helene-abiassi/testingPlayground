@@ -1,26 +1,20 @@
 {
-  "name": "testingplayground",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "basic-testing-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "test": "vitest --run --reporter verbose",
+    "test:watch": "vitest",
+    "start": "http-server -c-1"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
+  "keywords": [],
+  "author": "Maximilian Schwarzmüller",
+  "license": "ISC",
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.2",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
-    "vite": "^5.3.1"
+    "http-server": "^14.1.0",
+    "install": "^0.13.0",
+    "npm": "^8.6.0",
+    "vitest": "^0.9.0"
   }
 }
