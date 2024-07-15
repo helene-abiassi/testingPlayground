@@ -2,9 +2,9 @@ import { extractNumbers } from "./src/parser.js";
 import {
   validateStringNotEmpty,
   validateNumber,
-} from "./src/util/validation.js";
+} from "./src/utils/validation.js";
 import { add } from "./src/math.js";
-import { transformToNumber } from "./src/util/numbers.js";
+import { transformToNumber } from "./src/utils/numbers.js";
 
 const form = document.querySelector("form");
 const output = document.getElementById("result");
