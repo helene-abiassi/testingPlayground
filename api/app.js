@@ -1,4 +1,4 @@
-import { extractPostData, savePost } from "./posts/posts.js";
+import { extractPostData, savePost } from "./posts/posts";
 
 const formElement = document.querySelector("form");
 

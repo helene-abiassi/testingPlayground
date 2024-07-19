@@ -1,4 +1,4 @@
-import { ValidationError } from "./errors.js";
+import { ValidationError } from "./errors";
 
 export function validateNotEmpty(text, errorMessage) {
   if (!text || text.trim().length === 0) {
